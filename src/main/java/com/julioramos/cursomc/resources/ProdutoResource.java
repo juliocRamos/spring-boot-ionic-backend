@@ -11,24 +11,27 @@ import com.julioramos.cursomc.domain.Categoria;
 import com.julioramos.cursomc.services.CategoriaService;
 
 /**
- * Controlador REST que define os endpoints para Categoria.
+ * Controlador REST que define os endpoints para Produto.
  */
 @RestController
-@RequestMapping(value = "/categorias")
-public class CategoriaResource {
+@RequestMapping(value = "/produtos")
+public class ProdutoResource {
 
 	@Autowired
 	private CategoriaService service;
-
+	
 	/**
-	 * Endpoing para a consulta de uma Categoria.
+	 * Endpoing para a consulta de um Produto.
 	 * 
-	 * @param id Identificador da Categoria que deseja-se buscar.
+	 * @param id
+	 *   Id da Categoria que deseja-se buscar.
 	 *
-	 * @return A Categoria com base no Id informado.
+	 * @return
+	 *   A Categoria com base no Id informado.
 	 */
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<?> find(@PathVariable Integer id) {
+
 		Categoria obj = service.buscar(id);
 		return ResponseEntity.ok(obj);
 	}
