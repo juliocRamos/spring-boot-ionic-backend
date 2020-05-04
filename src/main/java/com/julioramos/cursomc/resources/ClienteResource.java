@@ -7,30 +7,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.julioramos.cursomc.domain.Categoria;
-import com.julioramos.cursomc.services.CategoriaService;
+import com.julioramos.cursomc.domain.Cliente;
+import com.julioramos.cursomc.services.ClienteService;
 
-/**
- * Controlador REST que define os endpoints para Produto.
- */
 @RestController
-@RequestMapping(value = "/produtos")
-public class ProdutoResource {
+@RequestMapping(value = "/clientes")
+public class ClienteResource {
 
 	@Autowired
-	private CategoriaService service;
+	private ClienteService service;
 
-	/**
-	 * Endpoing para a consulta de um Produto.
-	 * 
-	 * @param id Id da Categoria que deseja-se buscar.
-	 *
-	 * @return A Categoria com base no Id informado.
-	 */
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<?> find(@PathVariable Integer id) {
-
-		Categoria obj = service.buscar(id);
+		Cliente obj = service.buscar(id);
 		return ResponseEntity.ok(obj);
 	}
 }
