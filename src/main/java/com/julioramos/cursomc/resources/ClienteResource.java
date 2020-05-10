@@ -20,6 +20,13 @@ public class ClienteResource {
 	@Autowired
 	private ClienteService service;
 
+	/**
+	 * Endpoint para a consulta de um Cliente.
+	 * 
+	 * @param id Id do Cliente que deseja-se buscar.
+	 *
+	 * @return O Cliente com base no Id informado.
+	 */
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<?> find(@PathVariable Integer id) {
 		Cliente obj = service.buscar(id);

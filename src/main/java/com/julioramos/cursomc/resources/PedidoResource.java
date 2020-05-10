@@ -19,9 +19,16 @@ public class PedidoResource {
 
 	@Autowired
 	private PedidoService service;
-	
+
+	/**
+	 * Endpoint para a consulta de um Pedido.
+	 * 
+	 * @param id Id do Pedido que deseja-se buscar.
+	 *
+	 * @return O Pedido com base no Id informado.
+	 */
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<?> find(@PathVariable Integer id){
+	public ResponseEntity<?> find(@PathVariable Integer id) {
 		Pedido obj = service.buscar(id);
 		return ResponseEntity.ok(obj);
 	}

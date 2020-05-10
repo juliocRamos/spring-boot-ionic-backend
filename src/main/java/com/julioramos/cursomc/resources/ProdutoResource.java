@@ -21,7 +21,7 @@ public class ProdutoResource {
 	private CategoriaService service;
 
 	/**
-	 * Endpoing para a consulta de um Produto.
+	 * Endpoint para a consulta de um Produto.
 	 * 
 	 * @param id Id da Categoria que deseja-se buscar.
 	 *
