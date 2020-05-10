@@ -25,7 +25,7 @@ public class CategoriaService {
 	 * 
 	 * @return A Categoria que possuí o id informado.
 	 */
-	public Categoria buscar(Integer id) {
+	public Categoria find(Integer id) {
 		Optional<Categoria> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getSimpleName()));
@@ -38,8 +38,13 @@ public class CategoriaService {
 	 *
 	 * @return A Categoria que foi criada.
 	 */
-	public Categoria inserir(Categoria obj) {
+	public Categoria insert(Categoria obj) {
 		obj.setId(null);
+		return repo.save(obj);
+	}
+
+	public Categoria update(Categoria obj) {
+		find(obj.getId());
 		return repo.save(obj);
 	}
 }
