@@ -2,6 +2,7 @@ package com.julioramos.cursomc.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -10,8 +11,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.julioramos.cursomc.enums.EstadoPagamento;
-	
+
+/**
+ * Definição da Entidade Pagamento.
+ */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Pagamento implements Serializable {
@@ -21,11 +26,13 @@ public abstract class Pagamento implements Serializable {
 	@Id
 	private Integer id;
 
+	@Column(name = "estado")
 	private Integer estado;
 
-	@OneToOne
-	@JoinColumn(name = "pedido_id")
 	@MapsId
+	@OneToOne
+	@JsonIgnore
+	@JoinColumn(name = "pedido_id")
 	private Pedido pedido;
 
 	protected Pagamento() {
@@ -61,6 +68,9 @@ public abstract class Pagamento implements Serializable {
 		this.pedido = pedido;
 	}
 
+	/*
+	 * @InheritDoc
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -69,6 +79,9 @@ public abstract class Pagamento implements Serializable {
 		return result;
 	}
 
+	/*
+	 * @InheritDoc
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

@@ -9,6 +9,9 @@ import com.julioramos.cursomc.domain.Cliente;
 import com.julioramos.cursomc.repositories.ClienteRepository;
 import com.julioramos.cursomc.services.exceptions.ObjectNotFoundException;
 
+/**
+ * Classe de Serviços para Cliente.
+ */
 @Service
 public class ClienteService {
 
@@ -20,7 +23,7 @@ public class ClienteService {
 	 * 
 	 * @param id Id do Cliente que deseja buscar.
 	 *
-	 * @return O Cliente que possui o id informado ou null.
+	 * @return O Cliente que possui o id informado.
 	 */
 	public Cliente buscar(Integer id) {
 		Optional<Cliente> obj = repo.findById(id);

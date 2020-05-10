@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 
 import com.julioramos.cursomc.enums.EstadoPagamento;
 
+/**
+ * Definição da Entidade PagamentoCartao.
+ */
 @Entity
 public class PagamentoCartao extends Pagamento {
 	

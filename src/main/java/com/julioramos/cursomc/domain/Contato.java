@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.julioramos.cursomc.enums.TipoContato;
 
 @Entity
@@ -29,7 +29,7 @@ public class Contato implements Serializable {
 	private Integer tipo;
 
 	@ManyToOne
-	@JsonBackReference
+	@JsonIgnore
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 

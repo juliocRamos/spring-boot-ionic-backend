@@ -1,5 +1,8 @@
 package com.julioramos.cursomc.enums;
 
+/**
+ * Enum que define os Estados de Pagamento suportados pelo sistema.
+ */
 public enum EstadoPagamento {
 
 	STATUS_PENDENTE(1, "Pendente"), STATUS_QUITADO(2, "Quitado"), STATUS_CANCELADO(3, "Cancelado");

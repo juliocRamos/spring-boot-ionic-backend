@@ -10,8 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * Definição da Entidade Endereco.
+ */
 @Entity
 public class Endereco implements Serializable {
 
@@ -40,7 +43,7 @@ public class Endereco implements Serializable {
 	@JoinColumn(name = "cidade_id")
 	private Cidade cidade;
 
-	@JsonBackReference
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
@@ -117,6 +120,9 @@ public class Endereco implements Serializable {
 		this.cliente = cliente;
 	}
 
+	/*
+	 * @InheritDoc
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -125,6 +131,9 @@ public class Endereco implements Serializable {
 		return result;
 	}
 
+	/*
+	 * @InheritDoc
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

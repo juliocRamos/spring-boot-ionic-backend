@@ -23,7 +23,7 @@ public class CategoriaService {
 	 * 
 	 * @param id Id da Categoria que deseja buscar.
 	 * 
-	 * @return A Categoria que possuí o id informado ou null.
+	 * @return A Categoria que possuí o id informado.
 	 */
 	public Categoria buscar(Integer id) {
 		Optional<Categoria> obj = repo.findById(id);

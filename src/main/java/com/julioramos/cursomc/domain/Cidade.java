@@ -1,5 +1,6 @@
 package com.julioramos.cursomc.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,8 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
+/**
+ * Definição da Entidade Cidade.
+ */
 @Entity
 public class Cidade {
 
@@ -16,10 +18,10 @@ public class Cidade {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@Column(name = "nome")
 	private String nome;
 
 	@ManyToOne
-	@JsonManagedReference
 	@JoinColumn(name = "estado_id")
 	private Estado estado;
 
@@ -57,6 +59,9 @@ public class Cidade {
 		this.estado = estado;
 	}
 
+	/*
+	 * @InheritDoc
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -65,6 +70,9 @@ public class Cidade {
 		return result;
 	}
 
+	/*
+	 * @InheritDoc
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
