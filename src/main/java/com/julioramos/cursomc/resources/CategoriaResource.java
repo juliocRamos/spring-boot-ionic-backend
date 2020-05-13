@@ -1,6 +1,7 @@
 package com.julioramos.cursomc.resources;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.julioramos.cursomc.domain.Categoria;
 import com.julioramos.cursomc.services.CategoriaService;
+
+import dtos.CategoriaDTO;
 
 /**
  * Controlador REST que define os endpoints para Categoria.
@@ -69,9 +72,27 @@ public class CategoriaResource {
 		return ResponseEntity.noContent().build();
 	}
 	
+	/**
+	 * Endpoint para deletar uma Categoria.
+	 *
+	 * @param id Identificador da Categoria que será deletada.
+	 *
+	 * @return Um Response entity vazio com o HttpCode 204 (No Content).
+	 */
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
+	}
+	
+	/**
+	 * Endepoint que retorna todas as Categorias.
+	 *
+	 * @return Um response entity com uma lista contendo todas as Categorias.
+	 */
+	@GetMapping
+	public ResponseEntity<List<CategoriaDTO>> findAll(){
+		List<CategoriaDTO> categorias = service.findAll();
+		return ResponseEntity.ok(categorias);
 	}
 }

@@ -1,6 +1,8 @@
 package com.julioramos.cursomc.services;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -10,6 +12,8 @@ import com.julioramos.cursomc.domain.Categoria;
 import com.julioramos.cursomc.repositories.CategoriaRepository;
 import com.julioramos.cursomc.services.exceptions.DataIntegrityException;
 import com.julioramos.cursomc.services.exceptions.ObjectNotFoundException;
+
+import dtos.CategoriaDTO;
 
 /**
  * Classe de Serviços para Categoria.
@@ -60,9 +64,20 @@ public class CategoriaService {
 		try {
 			repo.deleteById(id);
 		} catch (DataIntegrityViolationException ex) {
-			throw new DataIntegrityException(
-					"Não foi possível excluir a Categoria com id: " + id + " pois a mesma está sendo referênciada por outras entidades", ex);
+			throw new DataIntegrityException("Não foi possível excluir a Categoria com id: " + id
+					+ " pois a mesma está sendo referênciada por outras entidades", ex);
 		}
 
+	}
+
+	/**
+	 * Retorna todas as Categorias cadastradas.
+	 *
+	 * @return Uma lista com todas as Categorias.
+	 */
+	public List<CategoriaDTO> findAll() {
+		List<CategoriaDTO> categorias = repo.findAll().stream().map(e -> new CategoriaDTO(e))
+				.collect(Collectors.toList());
+		return categorias;
 	}
 }
